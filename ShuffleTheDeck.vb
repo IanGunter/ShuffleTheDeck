@@ -24,19 +24,21 @@ Module ShuffleTheDeck
         Dim cardsDealt As Integer
         Randomize()
 
-        Console.WriteLine("Press enter to receive a card or type Q to quit. ")
-        If Console.ReadLine() = "Q" Then Exit Sub
+
 
         Do
-            If cardsDealt = 0 Then
-
-            Else Console.WriteLine("Press enter to receive a card or type Q to quit. ")
-                If Console.ReadLine() = "Q" Then Exit Sub
-            End If
 
 
+
+            Console.WriteLine("Press enter to receive a card or type Q to quit. ")
             cardsDealt += 1
             Console.WriteLine(StrDup(4, vbTab) & "Cards Dealt: " & cardsDealt)
+
+
+
+
+
+
 
 
             goodData = False
@@ -80,6 +82,8 @@ Module ShuffleTheDeck
 
 
             Console.WriteLine(cardValue & " Of " & suite)
+
+
 
             If cardsDealt = 52 Then
                 Console.WriteLine(StrDup(4, vbTab) & "Cards Shuffled")
