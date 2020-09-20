@@ -30,17 +30,14 @@ Module ShuffleTheDeck
 
 
 
-            Console.WriteLine("Press enter to receive a card or type Q to quit. ")
+            Console.WriteLine("Press enter to receive a card, Type S to shuffle, or type Q to quit. ")
+            'Add 1 to the number of cards dealt.
             cardsDealt += 1
+
             Console.WriteLine(StrDup(4, vbTab) & "Cards Dealt: " & cardsDealt)
 
 
-
-
-
-
-
-
+            'Do loop sets a Random Row, Random Column of the table to true  
             goodData = False
             Do Until goodData = True
                 randomColumn = CInt(Int((4 * Rnd())))
@@ -50,11 +47,13 @@ Module ShuffleTheDeck
                     currentArray(randomRow, randomColumn) = True
                     goodData = True
 
+                    'If Row, Column chosen is already true the loop restarts
                 ElseIf goodData = False Then
 
                 End If
             Loop
 
+            'If statements select the cards number suite based of Row and Column 
 
             cardNumber = CStr(randomRow + 1)
             If cardNumber = "11" Then
@@ -80,11 +79,11 @@ Module ShuffleTheDeck
                 suite = "Clubs"
             End If
 
-
+            'Writes Random card determined.
             Console.WriteLine(cardValue & " Of " & suite)
 
 
-
+            'Automatic card shuffle when 52 cards are dealt.
             If cardsDealt = 52 Then
                 Console.WriteLine(StrDup(4, vbTab) & "Cards Shuffled")
                 For row = 0 To 12
@@ -93,11 +92,27 @@ Module ShuffleTheDeck
                     Next
                     cardsDealt = 0
                 Next
-
             Else
             End If
 
-            If Console.ReadLine() = "Q" Then Exit Sub
+            'Select case allows quit or shuffle at any time 
+            Select Case Console.ReadLine()
+                Case "Q"
+                    Exit Sub
+                Case "S"
+                    Console.WriteLine(StrDup(4, vbTab) & "Cards Shuffled")
+                    For row = 0 To 12
+                        For column = 0 To 3
+                            currentArray(row, column) = False
+                        Next
+                        cardsDealt = 0
+                    Next
+
+                    Console.ReadLine()
+            End Select
+
+
+
             Console.Clear()
         Loop
 
